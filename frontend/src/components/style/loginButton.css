@@ -1,0 +1,10 @@
+button{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+.col-sm-3{
+    align-items: center;
+    border: solid;
+    text-align: center;
+}
