@@ -6,13 +6,18 @@ import LoginPlace from "./components/LoginPlace";
 
 export default function Home() {
   return (
-    <div className="container-fluid">
-      <NavBar></NavBar>
-      <br />
-      <div className="row">
-        <Notification></Notification>
-        <LoginPlace></LoginPlace>
+    <>
+      <Head>
+        <title>APDS</title>
+      </Head>
+      <div className="container-fluid">
+        <NavBar></NavBar>
+        <br />
+        <div className="row">
+          <Notification></Notification>
+          <LoginPlace></LoginPlace>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

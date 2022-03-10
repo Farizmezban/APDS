@@ -6,20 +6,20 @@ export default function LoginPlace() {
     <div className="col-sm-3">
       <h1>Login</h1>
       <br />
-      <Link href="../Userlogin">
+      <Link href="../user">
         <Button color="light" block size="lg" className="btn">
           USER LOGIN
         </Button>
       </Link>
       <br />
-      <Link href="../Shoplogin">
-        <Button color="light" block size="lg" className="btn">
+      <Link href="../shop">
+        <Button color="light" block size="lg" className="btn" onClick={()=>{console.log("Hello");}}>
           SHOP LOGIN
         </Button>
       </Link>
 
       <br />
-      <Link href="../Adminlogin">
+      <Link href="../admin">
         <Button color="light" block size="lg" className="btn">
           ADMIN LOGIN
         </Button>
