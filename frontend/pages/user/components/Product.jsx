@@ -9,9 +9,16 @@ export default function Product(props) {
     const remove = ()=>{
         if(QU>=1){
             setQU(QU-1)
+            var Q=QU-1
+            setPrice(Q*UP)
         }else{
             setQU(0)
         }
+    }
+    const add=()=>{
+      setQU(QU+1)
+      var Q=QU+1
+      setPrice(Q*UP)
     }
 
   return (
@@ -21,9 +28,9 @@ export default function Product(props) {
         <td>{props.no}</td>
         <td>{props.iteam}</td>
         <td>{UP}</td>
-        <td><Button onClick={()=>setQU(QU+1)}>ADD</Button> <Button onClick={()=>remove()}>Remove</Button><Button onClick={()=>{setQU(0)}}>Reset</Button></td>
+        <td><Button onClick={add}>ADD</Button> <Button onClick={remove}>Remove</Button><Button onClick={()=>{setQU(0);setPrice(0)}}>Reset</Button></td>
         <td>{QU}</td>
-        <td>{Price} <Button onClick={()=>{setPrice(UP*QU)}}>calculate</Button></td>
+        <td>{Price}</td>
       </tr>
     </>
   );

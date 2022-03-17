@@ -1,21 +1,19 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Head from "next/head";
 import NavBar from '../components/NavBar';
 import { Form, Input, Label, Table,Button } from 'reactstrap';
-import { useState } from 'react';
 import axios from 'axios';
 import Product from './components/Product';
-
-
+import TableHeading from './components/TableHeading';
 
 export default function Userlogin() {
   const [username, setusername] = useState("")
   const [password, setpassword] = useState("")
   const [signed,setsigned] = useState(false)
   const [problem,setproblem]=useState('')
-  const formHandler=(e)=>{
+  const  formHandler=async(e)=>{
     e.preventDefault();
-    axios.post('http://localhost:1000/user',{
+    await axios.post('http://localhost:1000/user',{
       username,
       password
     }).then((res)=>{res.data.signed?setsigned(res.data.signed):setproblem('wrong password')})
@@ -60,14 +58,7 @@ export default function Userlogin() {
               <Form>
                 <Table bordered>
                   <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Iteam</th>
-                      <th>Unit/Price</th>
-                      <th>Add/Remove</th>
-                      <th>Quantity</th>
-                      <th>Price</th>
-                    </tr>
+                   <TableHeading/>
                   </thead>
                   <tbody>
                     <Product
