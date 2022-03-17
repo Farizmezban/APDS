@@ -1,9 +1,10 @@
 import React from 'react'
 import Head from "next/head";
 import NavBar from '../components/NavBar';
-import { Form, Input, Label } from 'reactstrap';
+import { Form, Input, Label, Table,Button } from 'reactstrap';
 import { useState } from 'react';
 import axios from 'axios';
+import Product from './components/Product';
 
 
 
@@ -26,12 +27,12 @@ export default function Userlogin() {
       </Head>
       <NavBar></NavBar>
       <br />
-      {!signed ?(
+      {!signed ? (
         <div
           className="loginform form-group"
           style={{ width: "300px", margin: "auto" }}
         >
-          <Form onSubmit={formHandler}>
+          <Form onSubmit={formHandler} style={{ textAlign: "center" }}>
             <Input
               bsSize="sm"
               type="text"
@@ -45,12 +46,53 @@ export default function Userlogin() {
               placeholder="Password"
               onChange={(e) => setpassword(e.target.value)}
             />
+            <Button type="submit" size="lg">
+              Login
+            </Button>
             <br />
-            <Input bsSize="sm" type="submit"></Input>
+            {problem}
           </Form>
-          {problem}
         </div>
-      ):(<h1>Welcome to cart please select your product</h1>)}
+      ) : (
+        <>
+          <div className="row">
+            <div className="col-12" style={{ textAlign: "center" }}>
+              <Form>
+                <Table bordered>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Iteam</th>
+                      <th>Unit/Price</th>
+                      <th>Add/Remove</th>
+                      <th>Quantity</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <Product
+                      no={1}
+                      iteam={"Rice"}
+                      UP={2}
+                    ></Product>
+                    <Product
+                      no={2}
+                      iteam={'Wheate'}
+                      UP={4}
+                    ></Product>
+                    <Product
+                      no={3}
+                      iteam={'Kerosine'}
+                      UP={5}
+                    ></Product>
+                  </tbody>
+                </Table>
+                <Button type="submit">Submit</Button>
+              </Form>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
