@@ -8,19 +8,21 @@ export default function Product(props) {
     const [Price, setPrice] = useState(UP*QU)
     const remove = ()=>{
         if(QU>=1){
-            setQU(QU-1)
-            var Q=QU-1
-            setPrice(Q*UP)
+          var Q = QU - 1;
+          setQU(Q)
+          setPrice(Q*UP)
+          props.fun(Q)
         }else{
             setQU(0)
+            props.fun(0)
         }
     }
     const add=()=>{
-      setQU(QU+1)
-      var Q=QU+1
+      var Q = QU + 1;
+      setQU(Q)
       setPrice(Q*UP)
+      props.fun(Q)
     }
-
   return (
     <>
       <tr>
@@ -28,7 +30,7 @@ export default function Product(props) {
         <td>{props.no}</td>
         <td>{props.iteam}</td>
         <td>{UP}</td>
-        <td><Button onClick={add}>ADD</Button> <Button onClick={remove}>Remove</Button><Button onClick={()=>{setQU(0);setPrice(0)}}>Reset</Button></td>
+        <td><Button onClick={add}>ADD</Button> <Button onClick={remove}>Remove</Button><Button onClick={()=>{setQU(0);setPrice(0);props.fun(0)}}>Reset</Button></td>
         <td>{QU}</td>
         <td>{Price}</td>
       </tr>
