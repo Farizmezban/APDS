@@ -33,10 +33,15 @@ export default function Userlogin() {
       password
     }).then((res)=>{res.data.signed?setsigned(res.data.signed):setproblem('wrong password')})
   }
-  const placedform=(e)=>{
+  const placedform= async(e)=>{
     e.preventDefault();
+
+    await axios.post('http://localhost:1000/user/order',{
+      username,
+      Order,
+      slot
+    }).then((res)=>{res.data.placed?setPlaced(true):setPlaced(false)})
     console.log(slot);
-    setPlaced(true);
   }
   return (
     <div className="container-fluid">

@@ -14,5 +14,10 @@ router.post('/',(req,res,next)=>{
   }
 })
 
+router.post('/order',(req,res,next)=>{
+  console.log(req.body);
+  res.json({placed:true})
+})
+
 
 module.exports = router;
